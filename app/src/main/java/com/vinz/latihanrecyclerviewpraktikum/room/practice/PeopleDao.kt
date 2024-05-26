@@ -26,10 +26,4 @@ interface PeopleDao {
     // Fungsi ini mengembalikan LiveData yang berisi daftar semua orang. LiveData adalah kelas dari Android Architecture Components yang memungkinkan kita untuk mengamati perubahan data dalam database dan secara otomatis memperbarui UI jika ada perubahan.
     @Query("SELECT * FROM PeopleEntity ORDER BY id DESC")
     fun getAllPeople() : LiveData<List<PeopleEntity>>
-
-    @Update
-    fun updatePeople(peopleEntity: PeopleEntity)
-
-    @Delete
-    fun deletePeople(peopleEntity: PeopleEntity)
 }

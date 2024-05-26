@@ -68,10 +68,6 @@ class PeopleRoomActivity : AppCompatActivity() {
                     override fun onItemClicked(data: PeopleEntity) {
                         showSelectedPeople(data)
                     }
-
-                    override fun onItemMore(data: PeopleEntity) {
-                        PopUpPracticeFragment(data).show(supportFragmentManager, PopUpPracticeFragment.TAG)
-                    }
                 })
             }
         }

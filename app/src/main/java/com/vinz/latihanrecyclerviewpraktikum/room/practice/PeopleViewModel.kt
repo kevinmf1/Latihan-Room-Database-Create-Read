@@ -19,12 +19,4 @@ class PeopleViewModel(private val peopleRepository: PeopleRepository) : ViewMode
     fun getAllPeople(): LiveData<List<PeopleEntity>> {
         return peopleRepository.getAllPeople()
     }
-
-    fun updatePeople(peopleEntity: PeopleEntity) {
-        peopleRepository.updatePeople(peopleEntity)
-    }
-
-    fun deletePeople(peopleEntity: PeopleEntity) {
-        peopleRepository.deletePeople(peopleEntity)
-    }
 }

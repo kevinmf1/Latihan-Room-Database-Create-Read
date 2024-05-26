@@ -22,18 +22,6 @@ class PeopleRepository private constructor(
         appExecutors.diskIO().execute { appDao.insertPeople(peopleEntity) }
     }
 
-    fun updatePeople(peopleEntity: PeopleEntity) {
-        appExecutors.diskIO().execute {
-            appDao.updatePeople(peopleEntity)
-        }
-    }
-
-    fun deletePeople(peopleEntity: PeopleEntity) {
-        appExecutors.diskIO().execute {
-            appDao.deletePeople(peopleEntity)
-        }
-    }
-
     // Ini adalah objek companion yang berisi fungsi getInstance.
     // Fungsi getInstance digunakan untuk mendapatkan instance dari PeopleRepository.
     // Jika instance sudah ada, fungsi ini akan mengembalikan instance tersebut.

@@ -26,17 +26,13 @@ class PeopleAdapterRoom(private var playerList: List<PeopleEntity>) :
     // Interface OnItemClickCallback digunakan untuk mendefinisikan metode callback yang akan dipanggil ketika item diklik.
     interface OnItemClickCallback {
         fun onItemClicked(data: PeopleEntity)
-        fun onItemMore(data: PeopleEntity)
     }
 
     // Kelas PlayerViewHolder adalah kelas yang bertugas untuk menyimpan referensi ke tampilan item pada RecyclerView.
     class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val peopleName: TextView = itemView.findViewById(R.id.people_name)
         val peopleImage: ImageView = itemView.findViewById(R.id.people_image)
-        val btnMore: ImageView = itemView.findViewById(R.id.btn_more)
-        val btnFav: ImageView = itemView.findViewById(R.id.btn_fav)
     }
-
 
     // Fungsi onCreateViewHolder digunakan untuk membuat ViewHolder baru untuk item RecyclerView.
     override fun onCreateViewHolder(
@@ -47,8 +43,6 @@ class PeopleAdapterRoom(private var playerList: List<PeopleEntity>) :
             LayoutInflater.from(parent.context).inflate(R.layout.item_people, parent, false)
         return PlayerViewHolder(view)
     }
-
-    private var fav = false
 
     // Fungsi onBindViewHolder digunakan untuk mengatur tampilan item pada RecyclerView berdasarkan data orang.
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
@@ -61,14 +55,6 @@ class PeopleAdapterRoom(private var playerList: List<PeopleEntity>) :
 
         // Menetapkan onClickListener pada itemView untuk memanggil callback ketika item diklik.
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(playerList[holder.absoluteAdapterPosition]) }
-
-        holder.btnMore.setOnClickListener { onItemClickCallback.onItemMore(playerList[holder.absoluteAdapterPosition]) }
-
-        holder.btnFav.setOnClickListener {
-            fav = !fav
-            holder.btnFav.setImageResource(if (fav) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24)
-        }
-
     }
 
     // Fungsi getItemCount digunakan untuk mendapatkan jumlah item pada RecyclerView.
